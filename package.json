@@ -4,13 +4,12 @@
   "description": "",
   "main": "server.ts",
   "scripts": {
-    "start": "node src/server.ts",
+    "start": "node ./dist/server.js",
     "build": "npx tsc",
     "watch": "tsc-watch --esModuleInterop src/server.ts --outDir ./dist --onSuccess 'node ./dist/server.js'",
     "test": "ENV=test db-migrate --env test up && jasmine-ts && db-migrate db:drop test",
-    "tsc": "tsc",
-    "jasmine": "jasmine-ts",
-    "testj": "npm run build && npm run jasmine"
+    "tsc": "tsc"
+  
   },
   "author": "Udacity",
   "license": "ISC",
