@@ -91,7 +91,7 @@ const orders_routes = (app :express.Application)=>{
     app.post('/orders/create' , create)
     app.post('/orders/add/' , addProductToOrder)
 
-    app.get('/orders/:id',show)  
+    app.get('/orders/:user_id',show)  
 }
 
 export default orders_routes
