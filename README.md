@@ -101,4 +101,4 @@
 - `GET` : `/orders/:user_id`<br />
 **It requires a token and it uses the Bearer authentication Method**<br />
 **No request body needed**<br />
-**Returns order of the user with id passed in the url**
+**Returns order of the user with id passed in the URL**
