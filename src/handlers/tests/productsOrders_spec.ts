@@ -5,7 +5,7 @@ const request = supertest(app);
 
 let token : string;
 
-describe('POST adds product to database and to orders', function() {
+describe('Product and Orders Tests', function() {
 
   
   beforeAll(async () => {
@@ -80,6 +80,15 @@ describe('POST adds product to database and to orders', function() {
           "orderid" : 1,
           "quantity": 3
       })
+    expect(response.headers["content-type"]).toMatch(/json/);
+    expect(response.status).toEqual(200);
+  });
+
+  it('show the order with products ', async function() {
+    const response = await request
+      .get('/orders/1')
+      .set('Accept', 'application/json')
+      .set('Authorization', 'Bearer '+token)
     expect(response.headers["content-type"]).toMatch(/json/);
     expect(response.status).toEqual(200);
   });
