@@ -12,6 +12,10 @@
 
 - run `npm run test` to run all tests
 
+- Server port number `3000`
+
+- DATABASE port number  `5432`
+
 
 ### 2- Database
 
@@ -37,7 +41,7 @@ ENV=dev
 - create test database `CREATE DATABASE shopping_test;`
 - connect to database `\c shopping_test`
 - give access to the user `GRANT ALL PRIVILEGES ON DATABASE shopping_test TO shopping_user;`
-- port number GRANT `5432`
+
 
 
 
