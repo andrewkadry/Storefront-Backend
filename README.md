@@ -16,6 +16,30 @@
 ### 2- Database
 
 - add `.env` file and add all your local params in it 
+**Example**
+```
+POSTGRES_HOST=127.0.0.1
+POSTGRES_DB=shopping
+POSTGRES_TEST_DB=shopping_test
+POSTGRES_USER=shopping_user
+POSTGRES_PASSWORD=password123
+BCRYPT_PASSWORD=bcrypt_password
+HASH_ROUND=10
+TOKEN_SECRET=token_secret
+ENV=dev
+```
+
+- create user by `CREATE USER shopping_user WITH PASSWORD 'password123';`
+- create dev database `CREATE DATABASE shopping;`
+- connect to database `\c shopping`
+- give access to the user `GRANT ALL PRIVILEGES ON DATABASE shopping TO shopping_user;`
+
+- create test database `CREATE DATABASE shopping_test;`
+- connect to database `\c shopping_test`
+- give access to the user `GRANT ALL PRIVILEGES ON DATABASE shopping_test TO shopping_user;`
+- port number GRANT `5432`
+
+
 
 - run `db-migrate up` to make all the migrations and build the database
 
