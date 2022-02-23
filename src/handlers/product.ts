@@ -6,15 +6,7 @@ import jwt from 'jsonwebtoken'
 const prod = new Product()
 
 const index = async (req: Request, res : Response)=>{
-    try {
-        const authorizationHeader = req.headers.authorization as string
-        const token = authorizationHeader.split(' ')[1]
-        jwt.verify(token,process.env.TOKEN_SECRET as string)
-    } catch(err) {
-        res.status(401)
-        res.json('Access denied, invalid token')
-        return
-    }
+    
     try{
         const prods = await prod.index()
         res.json(prods)
@@ -26,15 +18,7 @@ const index = async (req: Request, res : Response)=>{
 }
 
 const show = async (req: Request, res : Response)=>{
-    try {
-        const authorizationHeader = req.headers.authorization as string
-        const token = authorizationHeader.split(' ')[1]
-        jwt.verify(token,process.env.TOKEN_SECRET as string)
-    } catch(err) {
-        res.status(401)
-        res.json('Access denied, invalid token')
-        return
-    }
+    
     try{
         const prods1 = await prod.show(Number(req.params.id as string))
         res.json(prods1)

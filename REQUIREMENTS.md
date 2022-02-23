@@ -24,22 +24,24 @@ These are the notes from a meeting with the frontend developer that describe wha
 
 ## Data Shapes
 #### Product
--  id
-- name
-- price
-- [OPTIONAL] category
+-  id : number auto increment
+- name : varchar
+- price : Decimal
  
 #### User
-- id
-- username
-- firstName
-- lastName
-- password
+- id : number auto increment
+- username : varchar unique
+- firstName : varchar
+- lastName : varchar
+- password : varchar
 
 #### Orders
-- id
-- id of each product in the order
-- quantity of each product in the order
-- user_id
-- status of order (active or complete)
+- id : number auto increment
+- user_id : number foreign key 
+- status of order (active or complete) : varchar
 
+### Order-item
+- id: number auto increment
+- quantity: integer number
+- product_id : number foreign key
+- order_id : number foreign key
