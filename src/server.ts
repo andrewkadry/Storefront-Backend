@@ -4,7 +4,6 @@ import cors from 'cors'
 import product_routes from './handlers/product'
 import users_routes from './handlers/users'
 import orders_routes from './handlers/orders'
-import routes from './routes/index';
 
 
 const corsOptions = {

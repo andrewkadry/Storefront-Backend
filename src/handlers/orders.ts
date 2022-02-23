@@ -47,8 +47,9 @@ const addProductToOrder = async (req: Request, res: Response) => {
 
     try {
         const op: orderProduct = {
-            productId : Number(req.body.productid ),
-            orderId: Number(req.body.orderid ),
+            id : 0,
+            product_id : Number(req.body.productid ),
+            order_id: Number(req.body.orderid ),
             quantity:Number(req.body.quantity )
         }
         const newprodtoord = await ord.addProductToOrder(op)

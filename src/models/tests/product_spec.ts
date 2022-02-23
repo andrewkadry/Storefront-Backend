@@ -4,13 +4,14 @@ const prod = new Product();
 
 describe("product Model", () => {
     let aaddedProductID : number;
+
+
+    
     it('should have an index method', () => {
         expect(prod.index).toBeDefined();
       });
 
-      it('should have an show method', () => {
-        expect(prod.show).toBeDefined();
-      });
+     
 
       it('create method should add a product', async () => {
         const result = await prod.create({

@@ -5,7 +5,7 @@ const request = supertest(app);
 
 let token : string;
 
-describe('Product and Orders Tests', function() {
+describe('Orders Tests', function() {
 
   
   beforeAll(async () => {
