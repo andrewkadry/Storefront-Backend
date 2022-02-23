@@ -30,7 +30,7 @@ it('sign in ' , async () => {
 
   
 
-  it('users', async function() {
+  it('get user by id', async function() {
     const response = await request
       .get('/users/1')
       .set('Accept', 'application/json')
@@ -44,6 +44,22 @@ it('sign in ' , async () => {
       "lastname": "Kadry",
       "password": jasmine.any(String),
     })
+  });
+
+  it('get all users', async function() {
+    const response = await request
+      .get('/users')
+      .set('Accept', 'application/json')
+      .set('Authorization', 'Bearer '+token)
+    expect(response.headers["content-type"]).toMatch(/json/);
+    expect(response.status).toEqual(200);
+    expect(response.body).toEqual([{
+      "id": jasmine.any(Number),
+      "username": "andrewKadry",
+      "firstname": "Andrew",
+      "lastname": "Kadry",
+      "password": jasmine.any(String),
+    }])
   });
 
 });

@@ -41,8 +41,22 @@ describe('Product Tests', function() {
     productID = response.body.id;
   });
 
+  it('should view all products', async function() {
+    const response = await request
+      .get('/products/')
+      .set('Accept', 'application/json')
+    expect(response.headers["content-type"]).toMatch(/json/);
+    expect(response.status).toEqual(200);
+    expect(response.body).toEqual([
+        { id: 1,
+          name: 'product1',
+          price: 230 },
+        { id: 2,
+          name: 'product2',
+          price: 1000 } ])
+});
 
-    it('should view a product with', async function() {
+    it('should view a product with id', async function() {
         const response = await request
           .get('/products/'+productID)
           .set('Accept', 'application/json')
@@ -51,7 +65,7 @@ describe('Product Tests', function() {
         expect(response.body).toEqual({
           "id": productID,
           "name": "product2",
-          "price": "1000"
+          "price": 1000
         })
   });
 

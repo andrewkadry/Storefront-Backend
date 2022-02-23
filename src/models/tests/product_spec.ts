@@ -6,13 +6,6 @@ describe("product Model", () => {
     let aaddedProductID : number;
 
 
-    
-    it('should have an index method', () => {
-        expect(prod.index).toBeDefined();
-      });
-
-     
-
       it('create method should add a product', async () => {
         const result = await prod.create({
           id: 2,
@@ -27,7 +20,34 @@ describe("product Model", () => {
         aaddedProductID = result.id;
       });
 
-      it('create method should delete a product', async () => {
+      it('show method should show a product', async () => {
+        const result = await prod.show(aaddedProductID);
+        expect(result).toEqual({
+          id: aaddedProductID,
+          name: 'product 1',
+          price: 250.30
+        });
+      });
+
+      it('index method should show all products', async () => {
+        const result = await prod.index();
+        expect(result).toEqual([
+          {
+            id: 1,
+            name: 'product1',
+            price: 230},
+          {
+            id: 2,
+            name: 'product2',
+            price: 1000},
+          {
+            id: aaddedProductID,
+            name: 'product 1',
+            price: 250.30
+        }]);
+      });
+
+      it('delete method should delete a product', async () => {
         const result = await prod.delete(aaddedProductID);
         expect(result).toEqual(aaddedProductID);
 });

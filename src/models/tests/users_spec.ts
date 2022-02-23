@@ -1,16 +1,9 @@
 import {user,User} from '../users'
 
 const use = new User();
+let userID : number;
 
 describe("users Model", () => {
-
-    it('should have an index method', () => {
-        expect(use.index).toBeDefined();
-      });
-
-      it('should have an show method', () => {
-        expect(use.show).toBeDefined();
-      });
 
       it('create method should add a user', async () => {
         const result = await use.create({
@@ -27,9 +20,10 @@ describe("users Model", () => {
           lastname: "wagih",
           password: jasmine.any(String)
         });
+        userID = result.id;
       });
 
-      it('create method should authenticate', async () => {
+      it('authenticate method should authenticate', async () => {
         const result = await use.authenticate(
           "andrewtest",
           "testpassword"
@@ -41,6 +35,40 @@ describe("users Model", () => {
           lastname: "wagih",
           password: jasmine.any(String)
         });
+      });
+
+      it('show method should show user by id', async () => {
+        const result = await use.show(userID);
+        expect(result).toEqual({
+          id: userID,
+          username: "andrewtest",
+          firstname: "andrew",
+          lastname: "wagih",
+          password: jasmine.any(String)
+        });
+      });
+
+      it('index method should get all users from database', async () => {
+        const result = await use.index();
+        expect(result).toEqual([{
+          id: 1,
+          username: "andrewKadry",
+          firstname: "Andrew",
+          lastname: "Kadry",
+          password: jasmine.any(String)
+        },{
+          id: 2,
+          username: "andrewOrder",
+          firstname: "andrew",
+          lastname: "wagih",
+          password: jasmine.any(String)
+        },{
+          id: userID,
+          username: "andrewtest",
+          firstname: "andrew",
+          lastname: "wagih",
+          password: jasmine.any(String)
+        }]);
       });
 
 });

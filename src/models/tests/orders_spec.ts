@@ -48,4 +48,23 @@ describe("Ordesrs Model", () => {
           });
         });
 
+        it('showOrder method should show order by user id', async () => {
+          const result = await ord.showOrder(userID);
+            expect(result).toEqual({
+              id : jasmine.any(Number),
+              statusoforder: 'active',
+              user_id: userID
+            });
+          });
+
+          it('showOrderProducts method should show products by order id', async () => {
+            const result = await ord.showOrderProducts(orderID);
+              expect(result).toEqual([{
+                id : jasmine.any(Number),
+                quantity: 9,
+                product_id: 1,
+                order_id: orderID
+              }]);
+            });
+
 });

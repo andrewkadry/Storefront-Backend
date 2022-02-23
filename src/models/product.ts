@@ -17,6 +17,8 @@ export class Product{
             const sql = 'SELECT * FROM product'
             const result = await conn.query(sql)
             conn.release()
+            for (const x of result.rows) { x.price = Number(x.price) }
+            
             return result.rows
         }catch(err){
             throw new Error(`error while connecting to product table ${err}`)
@@ -30,6 +32,7 @@ export class Product{
             const sql = 'SELECT * FROM product WHERE id=($1)'
             const result = await conn.query(sql,[id])
             conn.release()
+            result.rows[0].price = Number(result.rows[0].price)
             return result.rows[0]
         }catch(err){
             throw new Error(`error while getting this product ${err}`)
